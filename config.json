@@ -1,0 +1,26 @@
+{
+    "FAUXMO": {
+        "ip_address": "auto"
+    },
+    "PLUGINS": {
+        "CommandLinePlugin": {
+            "DEVICES": [
+                {
+                    "port": 12340,
+                    "on_cmd": "/bin/bash /home/pi/scanner/detach.sh /home/pi/scanner/single-scan.sh",
+                    "off_cmd": "echo aus >/tmp/dbg.txt",
+                    "name": "scanner",
+		    "state_cmd": "true"
+                },
+                {
+                    "port": 12341,
+                    "on_cmd": "/bin/bash /home/pi/scanner/detach.sh /home/pi/scanner/multi-scan.sh &",
+                    "off_cmd": "/bin/bash /home/pi/scanner/detach.sh /home/pi/scanner/multi-scan-finish.sh &",
+                    "name": "duplex",
+		    "state_cmd": "true"
+                }
+            ]
+
+        }
+    }
+}
