@@ -1,0 +1,16 @@
+[Unit]
+Description=Fauxmo
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi
+# Fix the paths below:
+ExecStart=/home/pi/.venv/bin/fauxmo -c /home/pi/scanner/config.json -v
+Restart=on-failure
+RestartSec=10s
+User=root
+
+[Install]
+WantedBy=multi-user.target
